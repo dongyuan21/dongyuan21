@@ -1,13 +1,12 @@
 <!-- 
-  Hi! I'm Dongyuan Li — an AI Engineer passionate about building intelligent agents, 
-  optimizing human-AI collaboration, and lifting heavy things.
+  Hi! I'm Dongyuan Li — an internet engineer with 5+ years in user growth, 
+  building AI-native applications, and lifting heavy things.
 -->
 
 <h1 align="center">Hi 👋, I'm Dongyuan</h1>
-<h3 align="center">AI Engineer | Agent Systems Builder | Olympic Weightlifter | Basketball Rookie</h3>
+<h3 align="center">User Growth Engineer | AI Agent Builder | Olympic Weightlifter</h3>
 
 <p align="center">
- 
   <a href="https://github.com/dongyuan21/blue-collar-interview-agent" target="_blank">
     <img src="https://img.shields.io/badge/Project-Blue_Collar_AI_Interviewer-orange?logo=ai" alt="Blue-Collar Interview Agent">
   </a>
@@ -16,9 +15,9 @@
 ---
 
 ### 🔭 What I'm Working On
-- **AI Native Systems**: Building React Agents with LangGraph  & DeepAgents
-- **Human-Centric AI**: Designing interview agents for blue-collar workers with empathy-aware logic
-- **Knowledge Engineering**: Structuring learning loops via Markdown-driven agent feedback
+- **User Growth Systems**: Designing incentive-driven viral loops, multi-channel activation funnels, and scalable referral architectures  
+- **AI Agent Applications**: Building production-grade interview, education, and workflow agents with LangChain 1.x, DeepAgents & **LangGraph**  
+- **Human-Centric AI**: Focusing on blue-collar worker support, mental/physical well-being assessment, and empathetic agent interactions  
 
 ### 💪 Strength Beyond Code
 - **Olympic Weightlifting**: Snatch **70kg** | Clean & Jerk **90kg** | Power Clean **100kg**
@@ -28,16 +27,14 @@
 ### 🛠 Tech Stack
 ![Java](https://img.shields.io/badge/Java-ED8B00?logo=java&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
-![LangChain](https://img.shields.io/badge/LangChain-000000?logo=langchain&logoColor=white)
+![LangGraph](https://img.shields.io/badge/LangGraph-4A90E2?logo=graphviz&logoColor=white)
 ![DeepAgents](https://img.shields.io/badge/DeepAgents-4A90E2?logo=deepmind&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-07405E?logo=sqlite&logoColor=white)
 
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
+![ClickHouse](https://img.shields.io/badge/ClickHouse-FFCC00?logo=clickhouse&logoColor=black)
+![Redis](https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white)
+![Elasticsearch](https://img.shields.io/badge/Elasticsearch-005571?logo=elasticsearch&logoColor=white)
 
----
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=dongyuan21&show_icons=true&theme=radical" alt="dongyuan21's GitHub stats" width="48%"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=dongyuan21&layout=compact&theme=radical" alt="Top Languages" width="48%"/>
-</p>
-
-> _“Document-first, vibe-coding, and relentless iteration.”_
+### 🌱 Currently Exploring
+- **Agent Skill Grounding**: Deploying reasoning, tool-use, and memory capabilities in real-world user growth and HR tech scenarios  
+- Long-term agent memory & state management with LangGraph  
