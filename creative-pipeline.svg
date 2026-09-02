@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 640" width="1080" height="640" role="img" aria-labelledby="title desc">
+  <title id="title">Match-3 Ad Creative Pipeline</title>
+  <desc id="desc">片头 Hook 加主体玩法 Gameplay 的素材生产链路：BCS 编排渲染，JSON 转 AE/Blender，ae-c4d-skills 沉淀资产，nanoAuralRuntime 生成音效。</desc>
+  <defs>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#ca8a04"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#ea580c"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1080" height="640" fill="#ffffff"/>
+
+  <text x="540" y="36" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="26" font-weight="700" fill="#0f172a">Match-3 Ad Creative Pipeline</text>
+  <text x="540" y="64" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" fill="#64748b">素材结构 · 片头 Hook  +  主体玩法 Gameplay</text>
+
+  <rect x="40" y="96" width="250" height="268" rx="16" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="165" y="132" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="700" fill="#334155">Hook / Intro</text>
+  <text x="165" y="158" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#475569">片头批量复刻</text>
+  <text x="165" y="210" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#64748b">C-end workflow</text>
+  <text x="165" y="232" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#64748b">调 C 端批量生产</text>
+  <text x="165" y="274" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#94a3b8">(not in GitHub)</text>
+
+  <text x="315" y="240" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="28" fill="#94a3b8">+</text>
+
+  <a href="https://dongyuan21.github.io/block-creative-studio/" target="_blank">
+    <rect x="340" y="96" width="400" height="268" rx="16" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="540" y="132" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="700" fill="#1e3a8a">block-creative-studio</text>
+    <text x="540" y="158" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#1d4ed8">主体玩法模拟器骨架</text>
+    <text x="540" y="202" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#1e3a8a">Import assets</text>
+    <text x="540" y="224" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#1e3a8a">Storyboard / 牌面编排</text>
+    <text x="540" y="246" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#1e3a8a">3D render  →  Export video</text>
+    <text x="540" y="268" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#1e3a8a">CLI for agents</text>
+  </a>
+
+  <rect x="780" y="96" width="260" height="70" rx="12" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <text x="910" y="124" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" fill="#854d0e">Render 不够？</text>
+  <text x="910" y="144" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#854d0e">BCS 导出 JSON</text>
+
+  <rect x="780" y="196" width="260" height="70" rx="12" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+  <text x="910" y="224" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" fill="#9a3412">Agent 解析 JSON</text>
+  <text x="910" y="244" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#9a3412">→ AE / Blender 工程</text>
+
+  <a href="https://github.com/dongyuan21/ae-c4d-skills" target="_blank">
+    <rect x="780" y="296" width="260" height="68" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="910" y="322" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="700" fill="#166534">ae-c4d-skills</text>
+    <text x="910" y="344" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#166534">原子化元素 → 资产回 BCS</text>
+  </a>
+
+  <line x1="740" y1="131" x2="778" y2="131" stroke="#ca8a04" stroke-width="2" marker-end="url(#arrow-gold)"/>
+  <line x1="910" y1="166" x2="910" y2="194" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <line x1="910" y1="266" x2="910" y2="294" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <line x1="780" y1="330" x2="742" y2="330" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <text x="760" y="318" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#2563eb">assets 回流</text>
+
+  <a href="https://github.com/dongyuan21/nanoAuralRuntime" target="_blank">
+    <rect x="340" y="430" width="400" height="80" rx="14" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+    <text x="540" y="462" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700" fill="#5b21b6">nanoAuralRuntime</text>
+    <text x="540" y="486" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#6b21a8">面向消除游戏的 Foley / SFX  →  混入成片</text>
+  </a>
+  <line x1="540" y1="364" x2="540" y2="428" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-purple)"/>
+
+  <rect x="40" y="542" width="320" height="56" rx="12" fill="#ecfeff" stroke="#0e7490" stroke-width="1.5"/>
+  <text x="200" y="576" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#155e75">拆解动画元素 · 不再手搓每一帧</text>
+
+  <rect x="380" y="542" width="320" height="56" rx="12" fill="#ecfeff" stroke="#0e7490" stroke-width="1.5"/>
+  <text x="540" y="576" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#155e75">编排剧本 / 牌面 · 不再手动摆格子</text>
+
+  <rect x="720" y="542" width="320" height="56" rx="12" fill="#ecfeff" stroke="#0e7490" stroke-width="1.5"/>
+  <text x="880" y="576" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#155e75">BCS CLI · Agent 可直接接入</text>
+</svg>
