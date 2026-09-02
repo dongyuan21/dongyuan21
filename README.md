@@ -21,10 +21,10 @@
 ---
 
 ### 🔭 What I'm Working On
-- **Casual Puzzle Games**: Building match-3 / block-puzzle gameplay, retention loops, and live-ops systems  
-- **User Growth**: Designing incentive-driven viral loops, multi-channel activation funnels, and scalable referral architectures  
-- **Ad Acquisition**: Running performance UA and iterating on playable / video / image creatives for casual games  
-- **AI Agents**: Building production-grade workflow agents with LangChain 1.x, DeepAgents & **LangGraph**  
+- **Casual Puzzle Games**: Building [block-creative-studio](https://dongyuan21.github.io/block-creative-studio/) — a match-3 simulator for importing assets, storyboarding boards, 3D rendering, and exporting video  
+- **User Growth**: Built overseas incentive platforms from 0 to 1 — task systems, viral loops, and SEO traffic — iterated with ROI / cost / financial-loss guardrails  
+- **Paid UA**: Running IAA user acquisition for casual games, iterating creatives against spend and ROI  
+- **AI Agents**: A runtime-controlled, read-only Data Agent for UA — routing questions, governed SQL, and evidence-backed reports  
 
 ### 🎬 Ad Creative Pipeline
 
