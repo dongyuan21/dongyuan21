@@ -167,25 +167,25 @@ def main():
     plus = text(300, 220, 36, 36, "+", size=28, color="#94a3b8", align="center")
     elements.append(plus)
 
-    bcs = rect(
+    melo = rect(
         340,
         120,
         390,
         250,
         "#dbeafe",
         "#2563eb",
-        link="https://dongyuan21.github.io/block-creative-studio/",
+        link="https://dongyuan21.github.io/melo-game-creative-studio/",
     )
-    bcs_t = labeled(
-        bcs,
-        "block-creative-studio\n主体玩法模拟器骨架\n\nImport assets\nStoryboard / 牌面编排\n3D render  →  Export video\nCLI for agents",
-        size=16,
+    melo_t = labeled(
+        melo,
+        "melo-game-creative-studio\n主体玩法模拟器骨架\n\nImport assets\nStoryboard / 牌面编排\n3D render  →  Export video\nCLI for agents",
+        size=15,
         color="#1e3a8a",
     )
-    elements += [bcs, bcs_t]
+    elements += [melo, melo_t]
 
     json_box = rect(780, 120, 260, 70, "#fef9c3", "#ca8a04")
-    json_t = labeled(json_box, "Render 不够？\nBCS 导出 JSON", size=15, color="#854d0e")
+    json_t = labeled(json_box, "Render 不够？\nMelo 导出 JSON", size=15, color="#854d0e")
     elements += [json_box, json_t]
 
     agent = rect(780, 210, 260, 70, "#ffedd5", "#ea580c")
@@ -201,13 +201,13 @@ def main():
         "#16a34a",
         link="https://github.com/dongyuan21/ae-c4d-skills",
     )
-    skills_t = labeled(skills, "ae-c4d-skills\n原子化元素 → 资产回 BCS", size=15, color="#166534")
+    skills_t = labeled(skills, "ae-c4d-skills\n原子化元素 → 资产回 Melo", size=15, color="#166534")
     elements += [skills, skills_t]
 
-    a1 = arrow(730, 155, 780, 155, start=bcs, end=json_box, color="#ca8a04")
+    a1 = arrow(730, 155, 780, 155, start=melo, end=json_box, color="#ca8a04")
     a2 = arrow(910, 190, 910, 210, start=json_box, end=agent, color="#ea580c")
     a3 = arrow(910, 280, 910, 300, start=agent, end=skills, color="#16a34a")
-    back = arrow(780, 335, 730, 335, start=skills, end=bcs, color="#2563eb")
+    back = arrow(780, 335, 730, 335, start=skills, end=melo, color="#2563eb")
     back_label = text(560, 310, 160, 20, "assets 回流", size=13, color="#2563eb", align="center")
     elements += [a1, a2, a3, back, back_label]
 
@@ -226,7 +226,7 @@ def main():
         size=16,
         color="#5b21b6",
     )
-    mix = arrow(535, 370, 535, 410, start=bcs, end=audio, color="#7c3aed")
+    mix = arrow(535, 370, 535, 410, start=melo, end=audio, color="#7c3aed")
     elements += [audio, audio_t, mix]
 
     p1 = rect(40, 530, 320, 56, "#ecfeff", "#0e7490")
@@ -234,7 +234,7 @@ def main():
     p2 = rect(380, 530, 320, 56, "#ecfeff", "#0e7490")
     p2t = labeled(p2, "编排剧本 / 牌面  ·  不再手动摆格子", size=14, color="#155e75")
     p3 = rect(720, 530, 320, 56, "#ecfeff", "#0e7490")
-    p3t = labeled(p3, "BCS CLI  ·  Agent 可直接接入", size=14, color="#155e75")
+    p3t = labeled(p3, "Melo CLI  ·  Agent 可直接接入", size=14, color="#155e75")
     elements += [p1, p1t, p2, p2t, p3, p3t]
 
     doc = {
@@ -256,7 +256,7 @@ def main():
     svg = """<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 640" width="1080" height="640" role="img" aria-labelledby="title desc">
   <title id="title">Match-3 Ad Creative Pipeline</title>
-  <desc id="desc">片头 Hook 加主体玩法 Gameplay 的素材生产链路：BCS 编排渲染，JSON 转 AE/Blender，ae-c4d-skills 沉淀资产，nanoAuralRuntime 生成音效。</desc>
+  <desc id="desc">片头 Hook 加主体玩法 Gameplay 的素材生产链路：Melo 编排渲染，JSON 转 AE/Blender，ae-c4d-skills 沉淀资产，nanoAuralRuntime 生成音效。</desc>
   <defs>
     <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
@@ -289,9 +289,9 @@ def main():
 
   <text x="315" y="240" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="28" fill="#94a3b8">+</text>
 
-  <a href="https://dongyuan21.github.io/block-creative-studio/" target="_blank">
+  <a href="https://dongyuan21.github.io/melo-game-creative-studio/" target="_blank">
     <rect x="340" y="96" width="400" height="268" rx="16" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
-    <text x="540" y="132" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="700" fill="#1e3a8a">block-creative-studio</text>
+    <text x="540" y="132" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="700" fill="#1e3a8a">melo-game-creative-studio</text>
     <text x="540" y="158" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#1d4ed8">主体玩法模拟器骨架</text>
     <text x="540" y="202" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#1e3a8a">Import assets</text>
     <text x="540" y="224" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#1e3a8a">Storyboard / 牌面编排</text>
@@ -301,7 +301,7 @@ def main():
 
   <rect x="780" y="96" width="260" height="70" rx="12" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
   <text x="910" y="124" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" fill="#854d0e">Render 不够？</text>
-  <text x="910" y="144" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#854d0e">BCS 导出 JSON</text>
+  <text x="910" y="144" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#854d0e">Melo 导出 JSON</text>
 
   <rect x="780" y="196" width="260" height="70" rx="12" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
   <text x="910" y="224" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" fill="#9a3412">Agent 解析 JSON</text>
@@ -310,7 +310,7 @@ def main():
   <a href="https://github.com/dongyuan21/ae-c4d-skills" target="_blank">
     <rect x="780" y="296" width="260" height="68" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
     <text x="910" y="322" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="700" fill="#166534">ae-c4d-skills</text>
-    <text x="910" y="344" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#166534">原子化元素 → 资产回 BCS</text>
+    <text x="910" y="344" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#166534">原子化元素 → 资产回 Melo</text>
   </a>
 
   <line x1="740" y1="131" x2="778" y2="131" stroke="#ca8a04" stroke-width="2" marker-end="url(#arrow-gold)"/>
@@ -333,12 +333,37 @@ def main():
   <text x="540" y="576" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#155e75">编排剧本 / 牌面 · 不再手动摆格子</text>
 
   <rect x="720" y="542" width="320" height="56" rx="12" fill="#ecfeff" stroke="#0e7490" stroke-width="1.5"/>
-  <text x="880" y="576" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#155e75">BCS CLI · Agent 可直接接入</text>
+  <text x="880" y="576" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#155e75">Melo CLI · Agent 可直接接入</text>
 </svg>
 """
     svg_path = root / "creative-pipeline.svg"
     svg_path.write_text(svg, encoding="utf-8")
     print(f"wrote {svg_path}")
+
+    try:
+        import cairosvg
+    except ImportError:
+        print("skip png: install cairosvg to regenerate creative-pipeline.png")
+        return
+
+    # Cairo/Pango cannot resolve GitHub's ui-* stacks; remap to local CJK fonts.
+    png_svg = (
+        svg.replace(
+            'font-family="ui-sans-serif, system-ui, sans-serif"',
+            'font-family="WenQuanYi Micro Hei, Droid Sans Fallback, sans-serif"',
+        ).replace(
+            'font-family="ui-monospace, SFMono-Regular, Menlo, monospace"',
+            'font-family="WenQuanYi Micro Hei Mono, WenQuanYi Micro Hei, monospace"',
+        )
+    )
+    png_path = root / "creative-pipeline.png"
+    cairosvg.svg2png(
+        bytestring=png_svg.encode("utf-8"),
+        write_to=str(png_path),
+        output_width=2160,
+        output_height=1280,
+    )
+    print(f"wrote {png_path}")
 
 
 if __name__ == "__main__":
