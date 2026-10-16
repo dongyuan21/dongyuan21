@@ -33,6 +33,16 @@
 - **Paid UA**: Running IAA user acquisition for casual games, iterating creatives against spend and ROI  
 - **AI Agents**: A runtime-controlled, read-only Data Agent for UA — routing questions, governed SQL, and evidence-backed reports  
 
+### 📄 Technical Report
+
+**A Reusable Production System for Casual Puzzle Game Ad Creatives**  
+*Design, Implementation, and Production Practice*  
+Dongyuan Li, Yuwei Liu · 2026
+
+**[English PDF](https://github.com/dongyuan21/dongyuan21/blob/main/papers/melo-gcs-technical-report-en.pdf)** · **[中文版 PDF](https://github.com/dongyuan21/dongyuan21/blob/main/papers/melo-gcs-technical-report-zh.pdf)**
+
+Illustrated reading editions re-typeset from the final manuscripts dated 20 September 2026. The figures are explanatory redraws; original case screenshots are not reproduced. Edition notes are included in both PDFs. These are author technical reports, not arXiv-published PDFs.
+
 ### 🎬 Ad Creative Pipeline
 
 A UA creative is **hook + gameplay**.
