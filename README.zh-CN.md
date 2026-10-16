@@ -29,6 +29,16 @@
 - **广告投放**：负责休闲游戏的 IAA 用户获取，结合消耗和 ROI 迭代广告素材。
 - **AI Agent**：建设面向投放业务的只读 Data Agent，通过运行时约束、受治理 SQL 和可追溯依据输出分析报告。
 
+### 📄 技术报告
+
+**面向消除类游戏广告素材的可复用生产系统**  
+*系统设计、实现与生产实践*  
+Dongyuan Li、Yuwei Liu · 2026
+
+**[中文版 PDF](https://github.com/dongyuan21/dongyuan21/blob/main/papers/melo-gcs-technical-report-zh.pdf)** · **[English PDF](https://github.com/dongyuan21/dongyuan21/blob/main/papers/melo-gcs-technical-report-en.pdf)**
+
+两版均根据 2026 年 9 月 20 日最终稿重新排版，提供完整正文、目录和图表。配图为依据正文重绘的解释性示意图，未重现原始案例截图；具体说明见 PDF 首页。本页展示作者技术报告，不标注为 arXiv 已发表版本。
+
 ### 🎬 广告素材生产流程
 
 一条投放素材由 **片头钩子 + 玩法正片** 组成。
