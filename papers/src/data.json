@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "zh": {
+      "title": "面向消除类游戏广告素材的可复用生产系统",
+      "subtitle": "系统设计、实现与生产实践技术报告",
+      "abstract": "消除类休闲游戏广告需要持续制作牌面、材质、堆叠、特效和操作节奏的变体。团队对成片进行生成式编辑时，局部替换的跨帧保持与玩法合理性增加了筛选和返工；与此同时，专业源工程中已有的对象、动画、材质及合成关系尚未得到充分复用。本报告介绍 Melo Game Creative Studio（melo-gcs）及其与外部 Agent、元素库和专业软件构成的可复用生产系统。存量源工程可直接改造，也可提取适用元素，供后续多模态召回与拼装；缺少源工程时，Agent 可根据参考视频调用 melo-gcs CLI 建立可编辑项目。项目分离玩法记录、演出时间与元素关联，支持后续外观、布局、动作和节奏修改。Chromium GPU 渲染承担浏览器出片，并支持无头运行；浏览器表现不能满足设计要求时，再转入AE／Blender 原生工程精修。报告通过源工程布局改造、采样帧保存重载检查及原创素材变体三个案例说明设计与项目复用。经作者确认的生产记录包括 18 组任务、每组 4 条：在报告的两小时生产阶段内导出 72 条视频，其中 50 条（69.4%）通过内部综合验收并已投放；每条输出的模型 Token 费用低于 1 美元，不含其他制作成本。本报告结合系统实现、制作案例和生产观察，介绍了以存量设计复用、领域编排和浏览器渲染支持广告变体制作的一条实际路径。",
+      "keywords": "消除类游戏广告；设计源工程复用；melo-gcs；外部 Agent；玩法编排；无头渲染；Chromium"
+    },
+    "en": {
+      "title": "A Reusable Production System for Casual Puzzle Game Ad Creatives",
+      "subtitle": "Design, Implementation, and Production Practice",
+      "abstract": "Casual puzzle-game advertisements require recurring changes to tile faces, materials, stacks, effects, and interaction pacing. In the team’s generative editing workflow, preserving local edits across frames and maintaining plausible gameplay required repeated selection and rework. Meanwhile, professional source projects retained underused objects, animations, materials, and compositing relationships. This technical report presents Melo Game Creative Studio (melo-gcs) and a reusable production system integrating external agents, an element library, and professional authoring tools. Existing source projects can be edited directly or provide reusable elements for multimodal retrieval and assembly. When no source project is available, an agent can build an editable project from a reference video through the melo-gcs CLI. Projects separate gameplay recordings, presentation timing, and element references to support subsequent appearance, layout, action, and pacing edits. Chromium GPU rendering supports browser-based and headless video production; native After Effects or Blender refinement is used when browser output does not meet design requirements. Three cases illustrate source-project layout editing, save-and-reload checks at sampled frames, and variants made from original assets. Author-confirmed production records describe 18 groups of four variants: 72 videos were exported during a reported two-hour production stage, and 50 (69.4%) passed internal review and were deployed. Recorded model token charges were below US$1 per produced video, excluding other production costs. The report brings together implementation, cases, and production observations to document a practical route to advertisement variants through reuse of existing designs, domain-specific authoring, and browser rendering.",
+      "keywords": "casual puzzle-game advertising; source-project reuse; melo-gcs; external agents; gameplay authoring; headless rendering; Chromium"
+    }
+  },
+  "tables": {
+    "zh": [
+      ["制作对象及其后续用途。", ["对象", "保存的主要内容", "后续用途"], [
+        ["专业源工程", "图层或对象、动画、材质及合成关系", "直接改造、提取适用元素、专业精修"],
+        ["melo-gcs 项目", "玩法、演出及元素关联", "重新载入、持续变体、浏览器渲染、按需原生工程交付"],
+        ["元素", "贴图、脚本、特效或组件及依赖和使用信息", "多模态召回、选择、绑定与跨项目拼装"],
+        ["视频成片", "已渲染的画面和时间序列", "投放、后续合成，或作为重建参考"]
+      ]],
+      ["主要制作能力及复用方式。", ["能力", "主要操作", "保留或继续使用的内容"], [
+        ["源工程定向改造", "在副本中修改指定图层、对象或效果", "原工程中未受影响的动画与合成关系"],
+        ["元素召回与拼装", "按文字或视觉参考选材，解析依赖并绑定", "已入库素材、组件及使用信息"],
+        ["牌面与材质变体", "替换指定外观及元素关联", "任务要求保留的对象、玩法与事件"],
+        ["多层堆叠调整", "改变布局、层级和遮挡，检查交互", "适用牌块、素材与游戏规则"],
+        ["节奏与动作编排", "调整停顿、动作间隔、反馈或选择", "原轨迹或按新动作计算的状态"],
+        ["参考视频重建", "建立候选项目、渲染对照并修订", "保存后的 melo-gcs 项目及关联元素"],
+        ["批量与专业交付", "浏览器出片，必要时交付 DCC 工程", "项目文件、输出视频及按需原生工程"]
+      ]],
+      ["节奏目标与状态处理。", ["演出目标", "修改内容", "状态与轨迹处理"], [
+        ["犹豫选择", "增加选择前停顿，调整动作间隔", "沿用原有效动作，重新安排演出时间"],
+        ["顺畅消除", "缩短等待，协调操作与反馈", "沿用原有效动作，调整演出节奏"],
+        ["误选有效对象", "选择规则允许但偏离计划的对象", "重新计算托盘、棋盘与后续消除"],
+        ["点击不可操作对象", "呈现无效尝试和规则允许的反馈", "不强制产生有效移动或消除"]
+      ]],
+      ["实现与运行配置摘要。", ["项目", "记录内容", "用途"], [
+        ["浏览器制作", "Chromium＋GPU；melo-gcs 支持无头运行", "预览、批量渲染与视频导出"],
+        ["已测试显卡", "RTX 3060、RTX 4090", "浏览器硬件渲染路径测试"],
+        ["外部 Agent 宿主", "Codex", "任务理解、工具调用与制作编排"],
+        ["72 条生产批次", "GPT/SOL（原记录配置标签）", "18 组、每组 4 条的 melo-gcs 浏览器生产"],
+        ["近期视频重建", "GPT-6 Astra，extra-high", "参考视频接入及后续项目变体"],
+        ["专业软件", "After Effects、Blender", "源工程利用与按需原生工程精修"]
+      ]],
+      ["生产批次与背景记录。", ["项目", "报告值", "计量含义"], [
+        ["本系统批次组成", "18 组×4 条＝72 条", "多组任务及组内派生输出"],
+        ["本系统出片路径", "melo-gcs／Chromium GPU", "72 条均从浏览器路线导出"],
+        ["本系统生产耗时", "2 小时", "团队报告的生产阶段时间"],
+        ["模型 Token 费用", "每条输出低于 1 美元", "同批模型调用费用，不是全部制作成本"],
+        ["人工 AE／Blender 制作", "每人每天 1.5–2 条", "团队经验，任务与工作日口径未标准化"],
+        ["视频生成 API＋既有工作流", "每个候选约 2 分钟", "仍需筛选和重试，不等于合格交付时间"]
+      ]],
+      ["根据作者已确认记录整理的内部验收汇总。两种工作方式的运行条件未严格匹配。", ["指标", "本系统：melo-gcs 浏览器路线（n＝72）", "视频生成 API＋既有工作流（n＝72）"], [
+        ["玩法规则符合率", "72/72（100%）", "61/72（84.7%）"],
+        ["视觉结构完整率", "72/72（100%）", "13/72（18.1%）"],
+        ["成片时长", "全部超过 60 秒", "最长 30 秒"],
+        ["综合验收通过率", "50/72（69.4%）", "4/72（5.6%）"]
+      ]]
+    ],
+    "en": [
+      ["Production objects and their subsequent uses.", ["Object", "Main content retained", "Subsequent uses"], [
+        ["Professional source project", "Layers or objects, animation, materials, and compositing relationships", "Direct editing, element extraction, and professional refinement"],
+        ["melo-gcs project", "Gameplay, presentation, and element references", "Reloading, continued variation, browser rendering, and on-demand native-project delivery"],
+        ["Element", "Textures, scripts, effects, or components, with dependencies and usage information", "Multimodal retrieval, selection, binding, and cross-project assembly"],
+        ["Finished video", "Rendered images and their temporal sequence", "Ad deployment, further compositing, or reconstruction reference"]
+      ]],
+      ["Main production capabilities and reuse patterns.", ["Capability", "Main operations", "Content retained or reused"], [
+        ["Targeted source-project editing", "Edit specified layers, objects, or effects in a copy", "Unaffected animation and compositing relationships"],
+        ["Element retrieval and assembly", "Select from text or visual references; resolve dependencies and bind", "Registered assets, components, and usage information"],
+        ["Tile-face and material variants", "Replace specified appearance and element references", "Objects, gameplay, and events required by the task"],
+        ["Multilayer stack editing", "Change layout, layering, and occlusion; check interactions", "Applicable tiles, assets, and game rules"],
+        ["Pacing and action authoring", "Adjust pauses, action intervals, feedback, or selections", "Original trajectory or state recomputed from new actions"],
+        ["Reference-video reconstruction", "Build a candidate project, render, compare, and revise", "Saved melo-gcs project and associated elements"],
+        ["Batch and professional delivery", "Render in the browser; deliver a DCC project when needed", "Project files, videos, and on-demand native projects"]
+      ]],
+      ["Pacing goals and state handling.", ["Presentation goal", "Edits", "State and trajectory handling"], [
+        ["Hesitation", "Add a pause before selection; adjust action intervals", "Retain valid actions and reschedule their presentation"],
+        ["Fluent elimination", "Shorten waits; coordinate actions and feedback", "Retain valid actions and adjust pacing"],
+        ["Mistaken selection of a valid object", "Select an allowed object that departs from the intended plan", "Recompute tray, board, and subsequent eliminations"],
+        ["Click on an unavailable object", "Stage an invalid attempt and feedback allowed by the rules", "Do not force a valid move or elimination"]
+      ]],
+      ["Implementation and execution configuration summary.", ["Item", "Recorded configuration", "Use"], [
+        ["Browser production", "Chromium + GPU; headless support in melo-gcs", "Preview, batch rendering, and video export"],
+        ["Tested GPUs", "RTX 3060; RTX 4090", "Browser hardware-rendering path tests"],
+        ["External agent host", "Codex", "Task interpretation, tool calls, and orchestration"],
+        ["72-video production batch", "GPT/SOL (recorded configuration label)", "18 melo-gcs browser-production groups, four outputs each"],
+        ["Recent video reconstruction", "GPT-6 Astra; extra-high", "Reference-video intake and subsequent variants"],
+        ["Professional applications", "After Effects; Blender", "Source-project reuse and on-demand native refinement"]
+      ]],
+      ["Production batch and contextual records.", ["Item", "Reported value", "Measurement scope"], [
+        ["Batch composition", "18 groups × 4 variants = 72 videos", "Multiple task groups and within-group derived outputs"],
+        ["Rendering path", "melo-gcs / Chromium GPU", "All 72 videos exported through the browser path"],
+        ["Production time", "2 hours", "Team-reported production-stage time"],
+        ["Model token charges", "Below US$1 per output", "Model-call charges for the batch; not total production cost"],
+        ["Manual After Effects / Blender production", "1.5–2 videos per person-day", "Team experience; tasks and working-day scope not standardised"],
+        ["Video-generation API + existing workflow", "About 2 minutes per candidate", "Screening and retries still required; not accepted-delivery time"]
+      ]],
+      ["Descriptive internal acceptance summaries from author-confirmed records. The workflows were not evaluated under matched operating conditions.", ["Indicator", "melo-gcs browser path (n = 72)", "Video-generation API + existing workflow (n = 72)"], [
+        ["Gameplay-rule compliance", "72/72 (100%)", "61/72 (84.7%)"],
+        ["Visual structural integrity", "72/72 (100%)", "13/72 (18.1%)"],
+        ["Video duration", "All longer than 60 s", "At most 30 s"],
+        ["Overall production acceptance", "50/72 (69.4%)", "4/72 (5.6%)"]
+      ]]
+    ]
+  },
+  "captions": {
+    "zh": [
+      "系统总体架构。源工程可直接改造，或提取元素供多模态召回与拼装。melo-gcs 通过 Chromium GPU 无头渲染，结果满足设计要求时直接交付，否则由专用导入 Skill 转入 AE／Blender 精修。图中仅标出专业导入的作用与位置。",
+      "内容接入与持续制作。源工程可直接修改或整理为元素，参考视频则用于建立 melo-gcs 项目。项目变体经玩法与资源检查、Chromium GPU 渲染、媒体检查和设计审阅后交付。技术问题返回相应 melo-gcs 环节，浏览器表现无法满足设计要求时再转入 DCC。",
+      "基于可编辑 AEP 的参考布局重排。（a）原 AE 工程的渲染画面；（b）目标堆叠参考；（c）调整牌块位置、层级与遮挡后的结果。前后沿用原工程的界面框架、牌体表现和手势素材，参考图仅提供布局要求。",
+      "匿名项目 A001 的保存重载与连续编辑。（a）保存前的项目输出；（b）读取已保存项目文件后的输出；（c）基于重载项目修改堆叠后的输出。三栏均为第 58 帧（30 fps，约 1.93 秒）；像素一致性比较针对（a）与（b），抽检帧为第 0、58、434 帧。",
+      "原创素材的导入、保存与变体生成。（a）自制透明图案和背景；（b）经公共 CLI 导入、绑定并保存重载后渲染的青绿版本；（c）基于已保存项目修改配色、背景和标题颜色后的暖珊瑚版本。两版本保持 36 张牌、棋盘布局、玩法配置与 Take 记录一致。"
+    ],
+    "en": [
+      "Overall system architecture. Source projects can be edited directly or supply elements for multimodal retrieval and composition. melo-gcs performs headless rendering with Chromium and the GPU. Outputs meeting design requirements are delivered directly; otherwise, a dedicated import Skill transfers the project to After Effects or Blender for refinement. The figure shows only the role and position of professional import.",
+      "Content intake and continued production. Source projects may be edited directly or organised into elements; reference videos are used to build melo-gcs projects. Variants pass through gameplay and resource checks, Chromium GPU rendering, media checks, and design review. Technical issues return to the relevant melo-gcs step. DCC refinement is used when the browser’s visual result does not meet design requirements.",
+      "Reference-guided layout rearrangement in an editable AEP. (a) A rendering of the original After Effects project. (b) The target stack reference. (c) The result after changing tile positions, layer order, and occlusion. The original interface framework, tile-body appearance, and gesture assets are retained; the reference supplies layout requirements only.",
+      "Save-and-reload and continued editing for anonymised project A001. (a) Output before saving. (b) Output after reloading the saved project file. (c) Output after editing the stack in the reloaded project. All panels show frame 58 (30 fps, approximately 1.93 s). Pixel-consistency checks compare (a) and (b) at frames 0, 58, and 434.",
+      "Import, saving, and variation with original assets. (a) Self-created transparent motifs and backgrounds. (b) A teal version rendered after CLI import, binding, saving, and reloading. (c) A warm-coral version made by changing motif colours, the background, and title colour in the saved project. Both versions retain the same 36 tiles, board layout, gameplay configuration, and Take."
+    ]
+  }
+}
