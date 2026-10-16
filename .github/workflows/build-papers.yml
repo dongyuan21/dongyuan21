@@ -1,0 +1,109 @@
+name: Build paper PDFs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - papers/src/**
+      - .github/workflows/build-papers.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: paper-pdfs
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install typesetting dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-core fonts-noto-cjk libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz-subset0
+          python -m pip install weasyprint==68.0 pymupdf==1.26.7
+      - name: Verify recovered manuscript text
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json
+          root = Path('papers/src')
+          expected = {
+              'en.txt': 'ec803347955d91983dfb280abb3d2c7ffc779c7b72fc70a982ef78e33d476d6c',
+              'zh.txt': '5ca200452e4cff913b118da4dd03dd6e2effa8f66466c4e52d8f166f56707067',
+          }
+          for name, digest in expected.items():
+              actual = hashlib.sha256((root / name).read_bytes()).hexdigest()
+              assert actual == digest, (name, actual, digest)
+          data = json.loads((root / 'data.json').read_text(encoding='utf-8'))
+          canonical = json.dumps(data, sort_keys=True, ensure_ascii=False, separators=(',', ':')).encode()
+          assert hashlib.sha256(canonical).hexdigest() == '4363bf7ef205b8adcca505fe0c52c27557152a8a2bbb4282f3e91daa67043416'
+          for lang in ('en', 'zh'):
+              assert len(data['tables'][lang]) == 6
+              assert len(data['captions'][lang]) == 5
+          print('Both recovered manuscripts, abstracts, six tables, and five original captions verified.')
+          PY
+      - name: Typeset both reading editions
+        run: python papers/src/build.py
+      - name: Check PDF text coverage and page bounds
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json, re, unicodedata, hashlib
+          import fitz
+          root = Path('papers')
+          data = json.loads((root / 'src/data.json').read_text(encoding='utf-8'))
+          def norm(value):
+              return re.sub(r'\s+', '', unicodedata.normalize('NFKC', value))
+          results = {}
+          for lang in ('en', 'zh'):
+              path = root / f'melo-gcs-technical-report-{lang}.pdf'
+              pdf = fitz.open(path)
+              assert 10 <= len(pdf) <= 30
+              assert len(pdf.get_toc()) >= 35
+              text = norm(''.join(page.get_text(clip=fitz.Rect(40, 54, page.rect.width-40, page.rect.height-54)) for page in pdf))
+              source = (root / f'src/{lang}.txt').read_text(encoding='utf-8')
+              source = re.sub(r'(?m)^(#{1,2} .+)\n(?!\n)', r'\1\n\n', source)
+              blocks = [re.sub(r'^#{1,2}\s+', '', block.strip()) for block in re.split(r'\n\n+', source.strip())]
+              missing = [block[:120] for block in blocks if not block.startswith('@@') and norm(block) not in text]
+              assert not missing, (lang, 'missing prose', missing)
+              for title, headers, rows in data['tables'][lang]:
+                  for cell in [title, *headers, *(cell for row in rows for cell in row)]:
+                      assert norm(cell) in text, (lang, 'missing table cell', cell)
+              for caption in data['captions'][lang]:
+                  assert norm(caption) in text, (lang, 'missing caption')
+              for page in pdf:
+                  assert '\ufffd' not in page.get_text()
+                  for block in page.get_text('dict')['blocks']:
+                      for line in block.get('lines', []):
+                          for span in line['spans']:
+                              x0, y0, x1, y1 = span['bbox']
+                              assert x0 >= 20 and x1 <= page.rect.width-20, (lang, page.number+1, span['text'])
+                              assert y0 >= 10 and y1 <= page.rect.height-10
+              results[lang] = {'pages': len(pdf), 'bytes': path.stat().st_size, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'text_coverage_pass': True}
+          (root / 'pdf-validation.json').write_text(json.dumps(results, indent=2), encoding='utf-8')
+          print(json.dumps(results, indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bilingual-paper-pdfs
+          path: |
+            papers/melo-gcs-technical-report-en.pdf
+            papers/melo-gcs-technical-report-zh.pdf
+            papers/pdf-validation.json
+          if-no-files-found: error
+      - name: Commit PDF files only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add papers/melo-gcs-technical-report-en.pdf papers/melo-gcs-technical-report-zh.pdf
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'docs(papers): publish bilingual technical-report reading editions'
+          git push origin HEAD:main
